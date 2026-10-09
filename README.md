@@ -43,7 +43,7 @@
 git clone https://github.com/amgpulse/API-Key-Vault
 
 # 2. Install dependencies
-cd key-vault
+cd API-Key-Vault
 npm install
 
 # 3. Start the development server
