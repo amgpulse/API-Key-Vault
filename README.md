@@ -40,7 +40,7 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/key-vault.git
+git clone https://github.com/amgpulse/key-vault.git
 
 # 2. Install dependencies
 cd key-vault
