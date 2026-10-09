@@ -63,9 +63,12 @@ npm run preview    # preview the production build locally
 
 > ⚠️ **Never commit real API keys, `.env` files, or credentials to this repository.**
 
-- This app stores keys **only in your browser's `localStorage`** — they are never sent to a server.
-- Add any secrets to `.env` files (already git-ignored) or keep them out of version control entirely.
-- Use environment variables or a dedicated secrets manager for anything shared across devices.
+- Keys are encrypted in the browser with AES-256-GCM. The encryption key is derived from your master password with PBKDF2-HMAC-SHA-256 (600,000 iterations); a fresh random IV is used for each save.
+- The master password is never stored. If you forget it, the vault cannot be recovered.
+- Existing plaintext data is encrypted when you first set a master password. Until then, the old data remains in browser storage.
+- This protects stored data at rest, but does **not** protect against malicious browser extensions, compromised devices, XSS, or someone accessing an already-unlocked session. Lock the vault when you step away and use a strong, unique password.
+- Data stays in this browser and is not synced or backed up. Export/backup support is not currently available; clearing browser site data can permanently delete your vault.
+- Serve the app over HTTPS in production (localhost is also a secure context for browser cryptography). Do not use this app as a replacement for a managed secrets service for shared or production infrastructure.
 
 ## 📝 License
 
